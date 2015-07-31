@@ -30,7 +30,11 @@ sequelize.sync().then(function(){
 		if (count===0){
 			Quiz.bulkCreate(
 				[{pregunta:'Capital de Italia', respuesta:'Roma'},
-				 {pregunta:'Capital de Portugal', respuesta:'Lisboa'}
+				 {pregunta:'Capital de Portugal', respuesta:'Lisboa'},
+				 {pregunta:'Madrid es la capital de España',respuesta:'Si'},
+				 {pregunta:'Italia tiene forma de bota',respuesta:'Si'},
+				 {pregunta:'Barcelona se encuentra al sur de Italia',respuesta:'No'},
+				 {pregunta:'Capital de Francia',respuesta:'Paris'}
 				]
 			).then(function(){console.log('Base de datos inicializada')});;
 		}
