@@ -6,6 +6,23 @@ exports.loginRequired = function(req,res,next){
 	}
 };
 
+exports.autoLogout = function(req,res,next){
+	if (req.session.user){
+		acceso = Date.now();
+		ultimoAcceso = req.session.ultimoAcceso;
+
+		dif = acceso - ultimoAcceso;
+		console.log(acceso + ' - ' + ultimoAcceso + ' = ' +dif);
+		if (dif > 120000){
+			res.redirect('/logout');
+		}else{
+			next();
+		}
+	}else{
+		next();
+	}
+}
+
 exports.new = function (req,res){
 	var errors = req.session.errors || {};
 	req.session.errors = {};
